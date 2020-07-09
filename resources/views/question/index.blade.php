@@ -1,15 +1,4 @@
-@extends('layouts.master')
-
-@push('additional_scripts')
-    <script>
-        Swal.fire({
-            title: 'Berhasil!',
-            text: 'Memasangkan script sweet alert',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-        })
-    </script>
-@endpush
+@extends('adminlte.master')
 
 @section('content')
     <table class="table">
@@ -18,6 +7,7 @@
             <th>No</th>
             <th>Last Modified</th>
             <th>Title</th>
+            <th>Content</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -27,10 +17,11 @@
                     <td>{{ $key+1 }}</td>
                     <td>{{ $item->date_created }}</td>
                     <td>{{ $item->title }}</td>
+                    <td>{{ $item->content }}</td>
                     <td>
-                        <a href="/article/{{$item->id}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
-                        <a href="/article/{{$item->id}}/edit" class="btn btn-sm btn-default"><i class="fas fa-edit"></i></a>
-                        <form action="/article/{{$item->id}}" method="post" style="display:inline">
+                        <a href="/question/{{$item->id}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                        <a href="/question/{{$item->id}}/edit" class="btn btn-sm btn-default"><i class="fas fa-edit"></i></a>
+                        <form action="/question/{{$item->id}}" method="post" style="display:inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
