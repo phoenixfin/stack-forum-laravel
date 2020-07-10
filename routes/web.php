@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'QuestionController@index');
 
 Route::resource('question','QuestionController');
 Route::resource('answer','AnswerController');
+Route::get('answer/{question_id}/create', 'AnswerController@create_by_question');
