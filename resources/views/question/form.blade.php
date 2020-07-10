@@ -21,7 +21,7 @@
                 </textarea>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-dark bg-primary border-0 shadow" value="Save">
+                <input type="submit" class="btn btn-dark bg-primary border-0 shadow" value="Simpan">
             </div>
         </form>
     </div>
