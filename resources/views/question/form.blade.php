@@ -20,6 +20,12 @@
                 <textarea id="content" class="form-control tinymce-editor" name="content" id="content" rows="10">
                 </textarea>
             </div>
+            
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <input type="text" class="form-control" name="tags" id="tags">
+            </div>
+
             <div class="form-group">
                 <input type="submit" class="btn btn-dark bg-primary border-0 shadow" value="Simpan">
             </div>
