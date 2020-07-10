@@ -29,7 +29,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Menu pertanyaan</h6>
         <a class="collapse-item" href="buttons.html">Daftar Pertanyaanku</a>
-        <a class="collapse-item" href="cards.html">Buat baru</a>
+        <a class="collapse-item" href="/question/create">Buat baru</a>
         </div>
     </div>
     </li>
