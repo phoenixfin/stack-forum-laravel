@@ -46,6 +46,7 @@ class QuestionController extends Controller
         $data = $request->all();
         unset($data["_token"]);
         $data['user_id'] = 1; // sementara, delete jika sudah terpasang fitur login user
+        $data['date_created'] = now();
 
         $item = QuestionModel::insert($data);
         
