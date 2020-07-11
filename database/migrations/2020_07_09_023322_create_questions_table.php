@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->timestamp('date_modified', 0);
             $table->time('date_created', 0)->default(0);
             $table->string('title');
-            $table->string('content');
+            $table->text('content');
             $table->string('slug')->storedAs("lower(replace(title,' ','-'))");
             $table->string('tags')->nullable();
             $table->unsignedBigInteger('user_id');
