@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Berikan jawaban</h1>
+    <h1>Edit jawaban</h1>
 
     <section class="content">
 
@@ -16,10 +16,12 @@
           </div>
         </div>
 
-        <form action="/answer/{{ $question->id }}" method="POST">
+        <form action="/answer/{{ $question->id }}/{{$answer->id}}" method="POST">
             @csrf
+            @method('PUT')
             <div class="form-group">
                 <textarea id="content" class="form-control tinymce-editor" name="content" id="content" rows="10">
+                {{$answer->content}}
                 </textarea>
             </div>
 

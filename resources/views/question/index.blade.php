@@ -11,7 +11,8 @@
             <h3>Semua pertanyaan</h3>
             <hr class="sidebar-divider">
         </div>
-
+        <a href="/question/create" class="btn btn-info shadow mb-2">Tambah pertanyaan</a>
+        <br>               
         @foreach($questions as $q)
             <div class="col-12 mb-4 pl-0">
                 <div class="card border-left-primary shadow h-100 py-2">
@@ -20,13 +21,12 @@
                             <div class="col mr-2">
                                 <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">{{$q->user_data->name}}</div>
                                 <div class="text-xs mb-3 font-italic text-gray-800"><i class="far fa-clock"></i>{{ $q->date_created }}</div>
-                                <div class="h5 mb-3 font-weight-bold text-gray-800"><a href="#">{{$q->title}}</a></div>
+                            <div class="h5 mb-3 font-weight-bold text-gray-800"><a href="/question/{{$q->id}}">{{$q->title}}</a></div>
                                 <div class="h6 mb-0 font-weight-bold text-gray-600">{{$q->content}}</div>
                                 <div class="nav-item">
                                     <?php $tags = explode(',', $q->tags)?>
-                                    
                                     @foreach($tags as $tag)
-                                        @if ($tag != '')                                        
+                                        @if ($tag != '')
                                             <span class="btn btn-sm btn-info">{{ $tag }}</span>
                                         @endif
                                     @endforeach

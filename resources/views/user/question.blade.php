@@ -3,7 +3,7 @@
 @section('title')
     <title>LaraForum</title>
 @endsection
-
+ta
 @section('content')
     <div class="col-12 mb-4 pl-0">
         <h3>List pertanyaanku</h3>
