@@ -45,8 +45,7 @@ class QuestionController extends Controller
     {
         $data = $request->all();
         unset($data["_token"]);
-        $data['user_id'] = 1; // sementara
-        $data['date_created'] = 0;
+        $data['user_id'] = 1; // sementara, delete jika sudah terpasang fitur login user
 
         $item = QuestionModel::insert($data);
         
@@ -65,11 +64,15 @@ class QuestionController extends Controller
     {
         $question = QuestionModel::find_by_id($id);
         if (is_null($question)) {
-           return view('question.null');
+            return view('question.null');
         } else {
-           $answers = QuestionModel::get_answers_by_id($id);
-           $QA = Array('Q'=>$question, 'A'=>$answers);
-           return view('question.show', compact('QA'));
+            $question->user_data = UserModel::find_by_id($question->user_id);           
+            $answers = QuestionModel::get_answers_by_id($id);
+            foreach($answers as $a) {
+                $a->user_data = UserModel::find_by_id($a->user_id);
+            }            
+            $question->answers = $answers;
+            return view('question.show', compact('question'));
         } 
     }
 
@@ -95,7 +98,7 @@ class QuestionController extends Controller
     public function update(Request $request, $id)
     {
         $question = QuestionModel::update($id, $request->all());
-        return redirect('/question');
+        return redirect("/question");
     }
 
     /**
