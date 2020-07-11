@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @include('layouts.scripts.vote')    
     <div class="container-fluid p-0">
         <!-- Page Heading -->     
         <div class="col-12 mb-4 pl-0">
@@ -35,17 +36,17 @@
                                 <div class="form-inline">
                                     <ul class="list-unstyled form-inline m-0 mt-2 col-6">
                                         <li class="nav-item">
-                                            <a class="nav-link row upvote" href="index.html">
+                                        <button class="btn upvote" onclick="upvote('{{$q->id}}',this,'question')">
                                                 <!-- <i class="fas fa-thumbs-up"></i> -->
                                                 <i class="far fa-thumbs-up"></i>
-                                                <span class="d-inline">12</span>
+                                                <span class="d-inline" id="question-{{$q->id}}-up">{{$q->upvote_count}}</span>
                                             </button>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link row downvote" href="index.html">
+                                            <button class="btn downvote" onclick="downvote('{{$q->id}}',this,'question')">
                                                 <!-- <i class="fas fa-thumbs-down"></i> -->
                                                 <i class="far fa-thumbs-down"></i>
-                                                <span class="d-inline">12</span>
+                                                <span class="d-inline" id="question-{{$q->id}}-down">{{$q->downvote_count}}</span>
                                             </a>
                                         </li>
                                     </ul>
