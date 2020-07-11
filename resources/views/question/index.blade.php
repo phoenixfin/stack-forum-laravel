@@ -28,7 +28,7 @@
                                     <?php $tags = explode(',', $q->tags)?>
                                     @foreach($tags as $tag)
                                         @if ($tag != '')
-                                            <span class="btn btn-sm btn-info">{{ $tag }}</span>
+                                            <span class="btn btn-sm btn-info">{{ "#".$tag }}</span>
                                         @endif
                                     @endforeach
                                 </div>
