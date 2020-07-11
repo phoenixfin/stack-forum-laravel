@@ -1,4 +1,4 @@
-@extends('adminlte.master')
+@extends('layouts.app')
 
 @section('content')
     <table class="table">

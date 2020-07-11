@@ -1,5 +1,5 @@
 <ul class="navbar-nav p-0 m-0" style="border-radius: 10px;">    
-    <h5 class="text-left">Perolehan</h5>
+    <h5 class="text-left">Reputasi</h5>
     <hr>
     <li class="nav-item">
         <a class="nav-link" href="index.html">
