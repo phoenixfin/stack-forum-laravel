@@ -35,23 +35,16 @@
                                 <div class="form-inline">
                                     <ul class="list-unstyled form-inline m-0 mt-2 col-6">
                                         <li class="nav-item">
-                                            <a class="nav-link row" href="index.html">
+                                            <a class="nav-link row upvote" href="index.html">
                                                 <!-- <i class="fas fa-thumbs-up"></i> -->
                                                 <i class="far fa-thumbs-up"></i>
                                                 <span class="d-inline">12</span>
-                                            </a>
+                                            </button>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link row" href="index.html">
+                                            <a class="nav-link row downvote" href="index.html">
                                                 <!-- <i class="fas fa-thumbs-down"></i> -->
                                                 <i class="far fa-thumbs-down"></i>
-                                                <span class="d-inline">12</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link row" href="index.html">
-                                                <!-- <i class="fas fa-thumbs-up"></i> -->
-                                                <i class="far fa-thumbs-up"></i>
                                                 <span class="d-inline">12</span>
                                             </a>
                                         </li>
@@ -174,3 +167,7 @@
         </div> --}}
     </div>
 @endsection
+
+@push('additional_scripts')
+    @include('layouts.scripts.vote')
+@endpush
