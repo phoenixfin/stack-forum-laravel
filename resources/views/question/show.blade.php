@@ -10,7 +10,7 @@
               <h1>Detail pertanyaan</h1>
             </div>
             <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
+              <ol class="breadcrumb float-sm-right pb-0" style="background:none;">
                 <li class="breadcrumb-item"><a href="/question">Back</a></li>
                 <li class="breadcrumb-item active">Detail Pertanyaan</li>
               </ol>
@@ -29,14 +29,14 @@
           </div>
           <div class="card-body border-0">
             <h6 class="card-subtitle"><i><i class="far fa-clock"></i> {{ $question->date_created }}</i></h6><br>
-          <p class="card-text">{{$question->content}}</p>
+          <p class="card-text">{!! $question->content !!}</p>
           </div>
 
           <div class="card-footer border-0">
             <?php $tags = explode(',', $question->tags)?>
             @foreach($tags as $tag)
                 @if ($tag != '')
-                    <span class="btn btn-sm btn-info">{{ $tag }}</span>
+                    <span class="badge badge-secondary">{{ $tag }}</span>
                 @endif
             @endforeach
           </div>
@@ -80,7 +80,7 @@
               <h6>{{ $answer->user_data->name }}</h6>
             </div>                 
             <div class="card-body border-0">
-              {{$answer->content}}
+              {!! $answer->content !!}
             </div>
             <div class="card-footer border-0 form-inline">
               <ul class="list-unstyled form-inline m-0 mt-2 col-6">
