@@ -36,7 +36,7 @@
             <?php $tags = explode(',', $question->tags)?>
             @foreach($tags as $tag)
                 @if ($tag != '')
-                    <span class="badge badge-secondary">{{ $tag }}</span>
+                    <span class="badge badge-secondary">{{ '#'.$tag }}</span>
                 @endif
             @endforeach
           </div>
@@ -72,7 +72,7 @@
         <!-- /.card -->
 
         <h1 class="mt-5">Semua jawaban</h1><br>
-        <a href="/answer/{{$question->id}}/create" class="btn btn-info shadow mb-2">Tambah jawaban</a>        
+        <a href="/answer/{{$question->id}}/create" class="btn border-left-info shadow mb-2">Tambah jawaban</a>        
         @foreach ($question->answers as $answer)
           <div class="card border-0 border-left-success mb-4 shadow">   
             <div class="card-header border-0">
