@@ -12,18 +12,18 @@
             <h3>Semua pertanyaan</h3>
             <hr class="sidebar-divider">
         </div>
-        <a href="/question/create" class="btn btn-info shadow mb-2">Tambah pertanyaan</a>
+        <a href="/question/create" class="btn border-left-info shadow mb-2">Tambah pertanyaan</a>
         <br>               
         @foreach($questions as $q)
             <div class="col-12 mb-4 pl-0">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-0 border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">{{$q->user_data->name}}</div>
-                                <div class="text-xs mb-3 font-italic text-gray-800"><i class="far fa-clock"></i>{{ $q->date_created }}</div>
+                                <div class="text-xs mb-3 font-italic text-gray-800"><i class="far fa-clock"></i> {{ $q->date_created }}</div>
                             <div class="h5 mb-3 font-weight-bold text-gray-800"><a href="/question/{{$q->id}}">{{$q->title}}</a></div>
-                                <div class="h6 mb-0 font-weight-bold text-gray-600">{!!$q->content!!}</div>
+                                <div class="h6 mb-0 font-weight-bold text-gray-600">{!! Str::limit($q->content, 20) !!}</div>
                                 <div class="nav-item mt-3">
                                     <?php $tags = explode(',', $q->tags)?>
                                     @foreach($tags as $tag)
@@ -52,7 +52,7 @@
                                     </ul>
                         
                                     <div class="col-6 text-right">
-                                        <a href="/answer/{{$q->id}}/create" class="btn btn-info shadow">Jawab</a>
+                                        <a href="/answer/{{$q->id}}/create" class="btn border-bottom-info shadow">Jawab</a>
                                         <a href="/question/{{$q->id}}/edit" class="btn btn-circle btn-warning shadow"><i class="fas fa-edit"></i></a>
                                         <form action="/question/{{$q->id}}" method="post" style="display:inline">
                                             @csrf
