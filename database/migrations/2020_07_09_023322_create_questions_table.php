@@ -14,8 +14,9 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->bigIncrements('id');            $table->timestamp('date_modified', 0);
-            $table->time('date_created', 0);
+            $table->bigIncrements('id');            
+            $table->timestamp('date_modified', 0);
+            $table->time('date_created', 0)->default(0);
             $table->string('title');
             $table->string('content');
             $table->string('slug')->storedAs("lower(replace(title,' ','-'))");
