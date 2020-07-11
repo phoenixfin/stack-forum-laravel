@@ -24,3 +24,7 @@ Route::delete('answer/{question_id}/{answer_id}', 'AnswerController@destroy');
 
 Route::post('question/upvote','VoteController@upvote')->name('upvote');
 Route::post('question/downvote','VoteController@downvote')->name('downvote');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

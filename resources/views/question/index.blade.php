@@ -28,7 +28,7 @@
                                     <?php $tags = explode(',', $q->tags)?>
                                     @foreach($tags as $tag)
                                         @if ($tag != '')
-                                            <span class="badge badge-secondary">{{ $tag }}</span>
+                                            <span class="badge badge-secondary">{{ '#'.$tag }}</span>
                                         @endif
                                     @endforeach
                                 </div>
