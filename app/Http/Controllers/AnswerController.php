@@ -3,27 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\AnswerModel;
+use App\Models\QuestionModel;
+use App\Http\Controllers\QuestionController;
 
 class AnswerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($question_id)
     {
-        //
+        $question = QuestionModel::find_by_id($question_id);
+        return view('answer.form', compact('question'));
     }
 
     /**
@@ -32,9 +26,17 @@ class AnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($question_id, Request $request)
     {
-        //
+        $data = $request->all();
+        unset($data["_token"]);
+        $data['user_id'] = 1; // sementara, delete jika sudah terpasang fitur login user
+        $data['question_id'] = $question_id;
+
+        $item = AnswerModel::insert($data);
+        if ($item) {
+            return redirect("/question/$question_id");
+        }
     }
 
     /**
@@ -43,7 +45,7 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($question_id, $answer_id)
     {
         //
     }
@@ -54,9 +56,11 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($question_id, $answer_id)
     {
-        //
+        $question = QuestionModel::find_by_id($question_id);
+        $answer = AnswerModel::find_by_id($answer_id);
+        return view('answer.edit', compact('question','answer'));
     }
 
     /**
@@ -66,9 +70,10 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($question_id, $answer_id, Request $request)
     {
-        //
+        $answer = AnswerModel::update($answer_id, $request->all());
+        return redirect("/question/$question_id");
     }
 
     /**
@@ -77,8 +82,9 @@ class AnswerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($question_id, $answer_id)
     {
-        //
+        $deleted = AnswerModel::destroy($answer_id);
+        return redirect("/question/$question_id");
     }
 }
