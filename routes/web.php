@@ -21,3 +21,6 @@ Route::get('answer/{question_id}/{answer_id}/show', 'AnswerController@show');
 Route::post('answer/{question_id}', 'AnswerController@store');
 Route::put('answer/{question_id}/{answer_id}', 'AnswerController@update');
 Route::delete('answer/{question_id}/{answer_id}', 'AnswerController@destroy');
+
+Route::post('question/upvote','VoteController@upvote')->name('upvote');
+Route::post('question/downvote','VoteController@downvote')->name('downvote');
