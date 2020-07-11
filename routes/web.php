@@ -14,5 +14,10 @@
 Route::get('/', 'QuestionController@index');
 
 Route::resource('question','QuestionController');
-Route::resource('answer','AnswerController');
-Route::get('answer/{question_id}/create', 'AnswerController@create_by_question');
+
+Route::get('answer/{question_id}/create', 'AnswerController@create');
+Route::get('answer/{question_id}/{answer_id}/edit', 'AnswerController@edit');
+Route::get('answer/{question_id}/{answer_id}/show', 'AnswerController@show');
+Route::post('answer/{question_id}', 'AnswerController@store');
+Route::put('answer/{question_id}/{answer_id}', 'AnswerController@update');
+Route::delete('answer/{question_id}/{answer_id}', 'AnswerController@destroy');
