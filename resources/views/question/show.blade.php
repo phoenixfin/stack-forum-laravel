@@ -79,7 +79,13 @@
         @foreach ($question->answers as $answer)
           <div class="card border-0 border-left-success mb-4 shadow">   
             <div class="card-header border-0">
+              
+              @if(Auth::check() && Auth::user()->id == $answer->user_id)
+              <h6>{{ $answer->user_data->name }} (saya)</h6>
+              @else
               <h6>{{ $answer->user_data->name }}</h6>
+              @endif
+              
               <i><i class="far fa-clock"></i> {{ Carbon\Carbon::parse($answer->date_modified)->format('d F Y - H:i:s') }}</i>
             </div>                 
             <div class="card-body border-0">
