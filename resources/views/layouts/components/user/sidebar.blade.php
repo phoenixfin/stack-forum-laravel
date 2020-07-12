@@ -10,7 +10,11 @@
         <i class="fas fa-home"></i>
         <span>Home</span></a>
     </li>
-
+    @guest 
+    @if (Route::has('register'))
+         
+    @endif
+    @else    
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -49,5 +53,6 @@
     </div>
     </li>
 
-</ul>
+    @endguest
+</ul> 
 <!-- End of Sidebar -->

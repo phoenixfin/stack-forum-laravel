@@ -8,7 +8,6 @@ use App\Models\UserModel;
 
 class QuestionController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -35,8 +34,8 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('question.form');
+    { 
+        return view('question.form'); 
     }
 
     /**
@@ -53,11 +52,12 @@ class QuestionController extends Controller
         $data['user_id'] = auth()->user()->id; 
         $data['date_created'] = now();
 
-        $item = QuestionModel::insert($data);
-        
-        if ($item) {
-            return $this->index();
-        }
+            $item = QuestionModel::insert($data);
+            
+            if ($item) {
+                return $this->index();
+            }
+       
     }
 
     /**
@@ -89,9 +89,10 @@ class QuestionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $question = QuestionModel::find_by_id($id);
-        return view('question.edit', compact('question'));
+    { 
+            $question = QuestionModel::find_by_id($id);
+            return view('question.edit', compact('question'));
+             
     }
 
     /**
