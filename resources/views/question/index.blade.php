@@ -20,9 +20,15 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
+
+                                @if(Auth::check() && Auth::user()->id == $q->user_id)
+                                <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">{{$q->user_data->name}} (saya)</div>
+                                @else
                                 <div class="text-sm font-weight-bold text-primary text-uppercase mb-1">{{$q->user_data->name}}</div>
+                                @endif
+
                                 <div class="text-xs mb-3 font-italic text-gray-800"><i class="far fa-clock"></i> {{ Carbon\Carbon::parse($q->date_created)->format('d F Y - H:i:s') }}</div>
-                            <div class="h5 mb-3 font-weight-bold text-gray-800"><a href="/question/{{$q->id}}">{{$q->title}}</a></div>
+                                <div class="h5 mb-3 font-weight-bold text-gray-800"><a href="/question/{{$q->id}}">{{$q->title}}</a></div>
                                 <div class="h6 mb-0 font-weight-bold text-gray-600">{!! Str::limit($q->content, 20) !!}</div>
                                 <div class="nav-item mt-3">
                                     <?php $tags = explode(',', $q->tags)?>
