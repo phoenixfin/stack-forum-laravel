@@ -9,7 +9,7 @@
     <div class="container-fluid p-0">
         <!-- Page Heading -->     
         <div class="col-12 mb-4 pl-0">
-            <h3>Semua pertanyaan</h3>
+            <h3>Semua pertanyaanku</h3>
             <hr class="sidebar-divider">
         </div>
         <a href="/question/create" class="btn border-left-info shadow mb-2">Tambah pertanyaan</a>
