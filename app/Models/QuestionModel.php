@@ -28,6 +28,11 @@ class QuestionModel {
         return $question;
     }
 
+    public static function find_by_user_id($id) {
+        $question = DB::table('questions')->where('user_id', $id)->get();
+        return $question;
+    }
+
     public static function get_answers_by_id($id) {
         $answers = DB::table('answers')->where('question_id','=', $id)->get();
         return $answers;
