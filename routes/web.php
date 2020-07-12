@@ -13,6 +13,7 @@
 
 Route::get('/', 'QuestionController@index');
 
+Route::get('question/my', 'QuestionController@myquestion');
 Route::resource('question','QuestionController');
 
 Route::get('answer/{question_id}/create', 'AnswerController@create');
