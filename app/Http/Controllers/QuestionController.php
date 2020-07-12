@@ -14,6 +14,11 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     public function index()
     {
         $questions = QuestionModel::get_all();
@@ -45,7 +50,7 @@ class QuestionController extends Controller
     {
         $data = $request->all();
         unset($data["_token"]);
-        $data['user_id'] = 1; // sementara, delete jika sudah terpasang fitur login user
+        $data['user_id'] = auth()->user()->id; 
         $data['date_created'] = now();
 
         $item = QuestionModel::insert($data);
