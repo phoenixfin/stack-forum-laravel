@@ -9,6 +9,10 @@ use App\Models\AnswerModel;
 
 class VoteController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     public function upvote(Request $request)
     {
         $data = $request->all();

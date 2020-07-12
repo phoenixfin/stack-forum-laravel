@@ -9,6 +9,10 @@ use App\Http\Controllers\QuestionController;
 
 class AnswerController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -12,7 +12,13 @@
             <h3>Semua pertanyaan</h3>
             <hr class="sidebar-divider">
         </div>
-        <a href="/question/create" class="btn border-left-info shadow mb-2">Tambah pertanyaan</a>
+        @guest 
+        @if (Route::has('register'))
+         
+        @endif
+        @else     
+            <a href="/question/create" class="btn border-left-info shadow mb-2">Tambah pertanyaan</a>
+        @endguest
         <br>               
         @foreach($questions as $q)
             <div class="col-12 mb-4 pl-0">
