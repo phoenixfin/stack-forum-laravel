@@ -7,7 +7,7 @@
     <section class="content">
 
         <!-- Default box -->
-        <div class="card border-0 border-left-primary shadow">
+        <div class="card border-0 border-left-primary shadow mb-5">
           <div class="card-header bg-white border-0">
             <h3 class="card-title m-0">{{ $question->title }}</h3>
           </div>
