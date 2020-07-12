@@ -14,6 +14,12 @@ class AnswerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create($question_id)
     {
         $question = QuestionModel::find_by_id($question_id);
@@ -30,7 +36,7 @@ class AnswerController extends Controller
     {
         $data = $request->all();
         unset($data["_token"]);
-        $data['user_id'] = 1; // sementara, delete jika sudah terpasang fitur login user
+        $data['user_id'] = auth()->user()->id; 
         $data['question_id'] = $question_id;
 
         $item = AnswerModel::insert($data);
