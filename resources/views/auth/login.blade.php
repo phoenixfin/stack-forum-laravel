@@ -19,8 +19,9 @@
                     <h1 class="h4 text-gray-900 mb-4">Welcome Laraver</h1>
                   </div>
                   <form class="user" method="POST" action="{{ route('login') }}">
+                  @csrf
                     <div class="form-group">
-                        <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                        <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus aria-describedby="emailHelp" placeholder="Alamat email">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -28,7 +29,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" autocomplete="current-password">
+                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required autocomplete="current-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -48,11 +49,11 @@
                   <hr>
                   <div class="text-center">
                     @if (Route::has('password.request'))
-                        <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
+                        <a class="small" href="{{ route('password.request') }}">Lupa Password?</a>
                     @endif
                   </div>
                   <div class="text-center">
-                    <a class="small" href="register.html">Create an Account!</a>
+                    <a class="small" href="/register">Buat akun baru!</a>
                   </div>
                 </div>
               </div>
