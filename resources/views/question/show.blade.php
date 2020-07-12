@@ -28,7 +28,7 @@
             <h3 class="card-title m-0">{{ $question->title }}</h3>
           </div>
           <div class="card-body border-0">
-            <h6 class="card-subtitle"><i><i class="far fa-clock"></i> {{ $question->date_created }}</i></h6><br>
+            <h6 class="card-subtitle"><i><i class="far fa-clock"></i> {{ Carbon\Carbon::parse($question->date_created)->format('d F Y - H:i:s') }}</i></h6><br>
           <p class="card-text">{!! $question->content !!}</p>
           </div>
 
@@ -57,6 +57,8 @@
                     </a>
                 </li>
             </ul>
+
+            @if(Auth::check() && Auth::user()->id == $question->user_id)
             <div class="col-6 text-right">
               <a href="/question/{{$question->id}}/edit" class="btn btn-circle btn-warning shadow"><i class="fas fa-edit"></i></a>
               <form action="/question/{{$question->id}}" method="post" style="display:inline">
@@ -65,6 +67,7 @@
                 <button type="submit" class="btn btn-circle btn-danger shadow"><i class="fas fa-trash"></i></button>
               </form>
             </div>
+            @endif
           </div>
           <!-- /.card-body -->          
           <!-- /.card-footer-->
@@ -76,8 +79,8 @@
         @foreach ($question->answers as $answer)
           <div class="card border-0 border-left-success mb-4 shadow">   
             <div class="card-header border-0">
-              <i><i class="far fa-clock"></i>${{ $answer->date_created }}</i>
               <h6>{{ $answer->user_data->name }}</h6>
+              <i><i class="far fa-clock"></i> {{ Carbon\Carbon::parse($answer->date_modified)->format('d F Y - H:i:s') }}</i>
             </div>                 
             <div class="card-body border-0">
               {!! $answer->content !!}
@@ -99,6 +102,7 @@
                       </a>
                   </li>
               </ul>
+              @if(Auth::check() && Auth::user()->id == $answer->user_id)
               <div class="col-6 text-right">
                 <a href="/answer/{{$question->id}}/{{$answer->id}}/edit" class="btn btn-circle btn-warning shadow"><i class="fas fa-edit"></i></a>
                 <form action="/answer/{{$question->id}}/{{$answer->id}}" method="post" style="display:inline">
@@ -107,6 +111,7 @@
                   <button type="submit" class="btn btn-circle btn-danger shadow"><i class="fas fa-trash"></i></button>
                 </form>
               </div>
+              @endif
             </div>
           </div>
         @endforeach        
