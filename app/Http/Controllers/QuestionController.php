@@ -82,6 +82,12 @@ class QuestionController extends Controller
         } 
     }
 
+    public function myquestion()
+    {
+        $questions = QuestionModel::find_by_user_id(auth()->user()->id);
+        return view('question.my', compact('questions'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
