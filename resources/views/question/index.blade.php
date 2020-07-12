@@ -45,14 +45,14 @@
                                         <button class="btn upvote" onclick="upvote('{{$q->id}}',this,'question')">
                                                 <!-- <i class="fas fa-thumbs-up"></i> -->
                                                 <i class="far fa-thumbs-up"></i>
-                                                <span class="d-inline" id="question-{{$q->id}}-up">{{$q->upvote_count}}</span>
+                                                <span class="d-inline" id="question-{{$q->id}}-up">{{$q->upvote_count+=1}}</span>
                                             </button>
                                         </li>
                                         <li class="nav-item">
                                             <button class="btn downvote" onclick="downvote('{{$q->id}}',this,'question')">
                                                 <!-- <i class="fas fa-thumbs-down"></i> -->
                                                 <i class="far fa-thumbs-down"></i>
-                                                <span class="d-inline" id="question-{{$q->id}}-down">{{$q->downvote_count}}</span>
+                                                <span class="d-inline" id="question-{{$q->id}}-down">{{$q->downvote_count+=1}}</span>
                                             </a>
                                         </li>
                                     </ul>
